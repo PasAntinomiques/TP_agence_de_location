@@ -3,6 +3,10 @@ package criterions;
 import rental.Criterion;
 import rental.Vehicle;
 
+/** Criterion satisfied if price is below maxPrice
+ * @author Jules
+ *
+ */
 public class PriceCriterion implements Criterion{
 	private float maxPrice;
 	
