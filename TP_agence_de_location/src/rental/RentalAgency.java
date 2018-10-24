@@ -1,7 +1,6 @@
 package rental;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -12,14 +11,14 @@ import criterions.Criterion;
 
 public class RentalAgency {
 	List<Vehicle> theVehicles;
-	Map<Client, Vehicle> renting;
+	Map<String, Vehicle> renting;
 	
 	/**
 	 * Constructor
 	 */
 	public RentalAgency() {
 		this.theVehicles = new LinkedList<Vehicle>();
-		this.renting = new HashMap<Client, Vehicle>();
+		this.renting = new HashMap<String, Vehicle>();
 	}
 	
 	/** Add a vehicle from an RentalAgency
@@ -68,9 +67,9 @@ public class RentalAgency {
 		UnknownVehicleException polo = new UnknownVehicleException();
 		IllegalStateException billy = new IllegalStateException();
 		if(!this.theVehicles.contains(v)) {throw polo;}
-		else if(this.renting.containsKey(client) || this.renting.containsValue(v)) {throw billy;}
+		else if(this.renting.containsKey(client.getName()) || this.renting.containsValue(v)) {throw billy;}
 		else {
-			this.renting.put(client, v);
+			this.renting.put(client.getName(), v);
 			return v.getDailyPrice();
 		}
 	}
@@ -79,7 +78,7 @@ public class RentalAgency {
 	 * @param client
 	 * @return
 	 */
-	public boolean hasRentedAVehicle(Client client) {return this.renting.containsKey(client);}
+	public boolean hasRentedAVehicle(Client client) {return this.renting.containsKey(client.getName());}
 	
 	/** Check if a vehicle is currently rented
 	 * @param v
@@ -90,7 +89,7 @@ public class RentalAgency {
 	/** Handle when a client returns a vehicle to the RentalAgency
 	 * @param client
 	 */
-	public void returnVehicle(Client client) {this.renting.remove(client);}
+	public void returnVehicle(Client client) {this.renting.remove(client.getName());}
 	
 	public Collection<Vehicle> allRentedVehicles(){return this.renting.values();}
 }

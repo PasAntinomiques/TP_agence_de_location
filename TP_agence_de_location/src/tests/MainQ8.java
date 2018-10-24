@@ -4,12 +4,13 @@ import java.util.*;
 
 import rental.Client;
 import rental.RentalAgency;
+import rental.UnknownVehicleException;
 import rental.Vehicle;
 
 /** main to test for question  Q8 */
 public class MainQ8 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalStateException, UnknownVehicleException {
 	RentalAgency agency = new RentalAgency();
 	Vehicle v = new Vehicle("b","m",2016,100);
 	agency.addVehicle(v);
