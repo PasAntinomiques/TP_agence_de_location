@@ -1,6 +1,10 @@
-package rental;
+package tests;
 
 import java.util.*;
+
+import rental.Client;
+import rental.RentalAgency;
+import rental.Vehicle;
 
 /** main to test for question  Q8 */
 public class MainQ8 {
