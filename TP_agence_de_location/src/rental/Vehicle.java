@@ -16,13 +16,13 @@ public class Vehicle {
      * @param brand the vehicle's brand
      * @param model the vehicle's model
      * @param productionYear the vehicle's production year
-     * @param dailyRentalPRice the daily rental price
+     * @param dailyRentalPrice the daily rental price
      */
-    public Vehicle(String brand, String model, int productionYear, float dailyRentalPRice) {
+    public Vehicle(String brand, String model, int productionYear, float dailyRentalPrice) {
 	this.brand = brand;
 	this.model = model;
 	this.productionYear = productionYear;
-	this.dailyRentalPrice = dailyRentalPRice;
+	this.dailyRentalPrice = dailyRentalPrice;
     }
     
     /**
