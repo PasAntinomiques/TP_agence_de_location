@@ -1,20 +1,16 @@
 package rental;
 
+/** A particular agency which increase the price of rent by 10% when the client is below 25 years old
+ * @author Quentin POSSAMAI
+ *
+ */
 public class SuspiciousRentalAgency extends RentalAgency {
-	
+
 	public SuspiciousRentalAgency() {super();}
-	
+
 	@Override
 	public float rentVehicle(Client client, Vehicle v) throws UnknownVehicleException, IllegalStateException {
-		UnknownVehicleException polo = new UnknownVehicleException();
-		IllegalStateException billy = new IllegalStateException();
-		if(!this.theVehicles.contains(v)) {throw polo;}
-		else if(this.renting.containsKey(client) || this.renting.containsValue(v)) {throw billy;}
-		else {
-			this.renting.put(client, v);
-			if(client.getAge() < 25) {return (float) (v.getDailyPrice()*1.1);}
-			else {return v.getDailyPrice();}
-			
-		}
+		float price = super.rentVehicle(client, v);
+		return client.getAge() < 25 ? (float)(price*1.1) : price;
 	}
 }
