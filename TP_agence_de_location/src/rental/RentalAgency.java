@@ -11,14 +11,14 @@ import criterions.Criterion;
 
 public class RentalAgency {
 	List<Vehicle> theVehicles;
-	Map<String, Vehicle> renting;
+	Map<Client, Vehicle> renting;
 	
 	/**
 	 * Constructor
 	 */
 	public RentalAgency() {
 		this.theVehicles = new LinkedList<Vehicle>();
-		this.renting = new HashMap<String, Vehicle>();
+		this.renting = new HashMap<Client, Vehicle>();
 	}
 	
 	/** Add a vehicle from an RentalAgency
@@ -67,9 +67,9 @@ public class RentalAgency {
 		UnknownVehicleException polo = new UnknownVehicleException();
 		IllegalStateException billy = new IllegalStateException();
 		if(!this.theVehicles.contains(v)) {throw polo;}
-		else if(this.renting.containsKey(client.getName()) || this.renting.containsValue(v)) {throw billy;}
+		else if(this.renting.containsKey(client) || this.renting.containsValue(v)) {throw billy;}
 		else {
-			this.renting.put(client.getName(), v);
+			this.renting.put(client, v);
 			return v.getDailyPrice();
 		}
 	}
@@ -78,7 +78,7 @@ public class RentalAgency {
 	 * @param client
 	 * @return
 	 */
-	public boolean hasRentedAVehicle(Client client) {return this.renting.containsKey(client.getName());}
+	public boolean hasRentedAVehicle(Client client) {return this.renting.containsKey(client);}
 	
 	/** Check if a vehicle is currently rented
 	 * @param v
@@ -89,7 +89,7 @@ public class RentalAgency {
 	/** Handle when a client returns a vehicle to the RentalAgency
 	 * @param client
 	 */
-	public void returnVehicle(Client client) {this.renting.remove(client.getName());}
+	public void returnVehicle(Client client) {this.renting.remove(client);}
 	
 	public Collection<Vehicle> allRentedVehicles(){return this.renting.values();}
 }
