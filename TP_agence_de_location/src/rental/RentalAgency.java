@@ -1,19 +1,25 @@
 package rental;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import criterions.Criterion;
 
 public class RentalAgency {
 	List<Vehicle> theVehicles;
+	Map<Client, Vehicle> renting;
 	
 	/**
 	 * Constructor
 	 */
 	public RentalAgency() {
 		this.theVehicles = new LinkedList<Vehicle>();
+		this.renting = new HashMap<Client, Vehicle>();
 	}
 	
 	/** Add a vehicle from an RentalAgency
@@ -50,4 +56,41 @@ public class RentalAgency {
 			System.out.println(itVehicles.next());
 		}
 	}
+	
+	/** Manage the rent when a client rent a vehicle
+	 * @param client The client who wants to rent
+	 * @param v The vehicle to rent
+	 * @return The DailyPrice of the vehicle v 
+	 * @throws UnknownVehicleException Raised when the vehicle is not possessed by the RentalAgency
+	 * @throws IllegalStateException Raised when client is already renting a vehicle
+	 */
+	public float rentVehicle(Client client, Vehicle v) throws UnknownVehicleException, IllegalStateException {
+		UnknownVehicleException polo = new UnknownVehicleException();
+		IllegalStateException billy = new IllegalStateException();
+		if(!this.theVehicles.contains(v)) {throw polo;}
+		else if(this.renting.containsKey(client) || this.renting.containsValue(v)) {throw billy;}
+		else {
+			this.renting.put(client, v);
+			return v.getDailyPrice();
+		}
+	}
+	
+	/** Check if the client is renting a vehicle
+	 * @param client
+	 * @return
+	 */
+	public boolean hasRentedAVehicle(Client client) {return this.renting.containsKey(client);}
+	
+	/** Check if a vehicle is currently rented
+	 * @param v
+	 * @return
+	 */
+	public boolean isRented(Vehicle v) {return this.renting.containsValue(v);}
+	
+	/** Handle when a client returns a vehicle to the RentalAgency
+	 * @param client
+	 */
+	public void returnVehicle(Client client) {this.renting.remove(client);}
+	
+	public Collection<Vehicle> allRentedVehicles(){return this.renting.values();}
 }
