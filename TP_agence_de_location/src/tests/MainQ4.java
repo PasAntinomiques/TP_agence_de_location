@@ -1,7 +1,7 @@
 package tests;
 
+import criterions.Criterion;
 import criterions.PriceCriterion;
-import rental.Criterion;
 import rental.RentalAgency;
 import rental.Vehicle;
 
