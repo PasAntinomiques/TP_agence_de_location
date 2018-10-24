@@ -10,7 +10,9 @@ public class RentalAgency {
 	/**
 	 * Constructor
 	 */
-	public RentalAgency() {}
+	public RentalAgency() {
+		this.theVehicles = new LinkedList<Vehicle>();
+	}
 	
 	/** Add a vehicle from an RentalAgency
 	 * @param v Vehicle added to the agency

@@ -74,6 +74,6 @@ public class Vehicle {
 	}
 
 	public String toString() {
-		return this.productionYear + " " + this.brand + " " + this.dailyRentalPrice;
+		return this.productionYear + " " + this.brand + " " + this.model + " "  + this.dailyRentalPrice +"€/day";
 	}
 }
