@@ -1,4 +1,6 @@
-package rental;
+package criterions;
+
+import rental.Vehicle;
 
 /**
  * a criterion for filtering vehicle that satisfies it

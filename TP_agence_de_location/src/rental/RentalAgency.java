@@ -4,6 +4,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import criterions.Criterion;
+
 public class RentalAgency {
 	List<Vehicle> theVehicles;
 	

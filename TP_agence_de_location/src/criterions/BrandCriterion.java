@@ -1,6 +1,5 @@
 package criterions;
 
-import rental.Criterion;
 import rental.Vehicle;
 
 /** Criterion is satisfied if vehicule brand equals this.brand
