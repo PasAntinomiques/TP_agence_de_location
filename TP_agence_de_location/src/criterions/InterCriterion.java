@@ -17,7 +17,9 @@ public class InterCriterion implements Criterion {
 	/** Generate a criterion that satisfies several criterion at the same time
 	 * 
 	 */
-	public InterCriterion(){;}
+	public InterCriterion(){
+		this.criterions = new LinkedList<Criterion>();
+		}
 	
 	/** Add a criterion to the InterCriterion
 	 * @param c The criterion to add
