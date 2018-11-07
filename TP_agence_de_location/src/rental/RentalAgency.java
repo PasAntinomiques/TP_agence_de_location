@@ -75,19 +75,19 @@ public class RentalAgency {
 	}
 	
 	/** Check if the client is renting a vehicle
-	 * @param client
-	 * @return
+	 * @param client client
+	 * @return true if client is renting a vehicle
 	 */
 	public boolean hasRentedAVehicle(Client client) {return this.renting.containsKey(client);}
 	
 	/** Check if a vehicle is currently rented
-	 * @param v
-	 * @return
+	 * @param v vehicle
+	 * @return true if a vehicle is rented
 	 */
 	public boolean isRented(Vehicle v) {return this.renting.containsValue(v);}
 	
 	/** Handle when a client returns a vehicle to the RentalAgency
-	 * @param client
+	 * @param client client
 	 */
 	public void returnVehicle(Client client) {this.renting.remove(client);}
 	
